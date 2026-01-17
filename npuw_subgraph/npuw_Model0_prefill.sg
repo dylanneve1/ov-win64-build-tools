@@ -1,0 +1,14 @@
+{
+   "pipeline_name": "npuw_Model0_prefill",
+   "repeated_numbers": {
+      "total_subgraphs": 3,
+      "Model0_prefill_00_FCEW000": 1,
+      "Model0_prefill_01_REP007E": 20,
+      "Model0_prefill_21_FCEW001": 1
+   },
+   "subgraphs": [
+      "./Model0_prefill_00_FCEW000.xml",
+      "./Model0_prefill_01_REP007E.xml",
+      "./Model0_prefill_21_FCEW001.xml"
+   ]
+}

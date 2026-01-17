@@ -1,0 +1,14 @@
+{
+   "pipeline_name": "npuw_Model0_kv1152",
+   "repeated_numbers": {
+      "total_subgraphs": 3,
+      "Model0_kv1152_00_FCEW000": 1,
+      "Model0_kv1152_01_REP0088": 20,
+      "Model0_kv1152_21_FCEW001": 1
+   },
+   "subgraphs": [
+      "./Model0_kv1152_00_FCEW000.xml",
+      "./Model0_kv1152_01_REP0088.xml",
+      "./Model0_kv1152_21_FCEW001.xml"
+   ]
+}
