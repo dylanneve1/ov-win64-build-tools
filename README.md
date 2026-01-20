@@ -6,6 +6,42 @@ Supports both **Windows** and **Linux**.
 
 ## Quick Start
 
+### Linux First-Time Setup
+
+On a vanilla Linux installation, start here:
+
+```bash
+# 1. Make scripts executable
+chmod +x scripts/*.sh
+
+# 2. Install build dependencies (cmake, ninja, gcc, python, etc.)
+./scripts/setup-linux.sh
+
+# 3. Clone repositories
+./scripts/clone-all.sh
+
+# 4. Install OpenVINO-specific dependencies
+cd openvino
+sudo ./install_build_dependencies.sh
+touch .deps_installed
+cd ..
+
+# 5. Build
+./scripts/ninja-build.sh
+```
+
+### Windows First-Time Setup
+
+On Windows, ensure you have Visual Studio installed, then:
+
+```batch
+REM 1. Clone repositories
+scripts\clone-all.bat
+
+REM 2. Build
+scripts\ninja-build.bat
+```
+
 ### 1. Clone Repositories
 
 **Windows:**
@@ -74,6 +110,7 @@ All scripts are located in the `scripts/` folder:
 
 | Script | Platform | Description |
 |--------|----------|-------------|
+| `setup-linux.sh` | Linux | Install all build dependencies (run first on vanilla Linux) |
 | `clone-all.bat/sh` | Win/Linux | Clone both OpenVINO and OpenVINO GenAI repositories |
 | `clone-openvino.bat/sh` | Win/Linux | Clone OpenVINO repository only |
 | `clone-openvino-genai.bat/sh` | Win/Linux | Clone OpenVINO GenAI repository only |
@@ -99,13 +136,23 @@ All scripts are located in the `scripts/` folder:
 - Python 3.9-3.12 (optional, for virtual environment)
 - ccache (optional, for faster rebuilds)
 
-**Install build dependencies on Linux:**
+**Automated installation:**
 ```bash
-# Ubuntu/Debian
-sudo apt-get update
-sudo apt-get install -y build-essential cmake ninja-build git python3 python3-pip
+./scripts/setup-linux.sh
+```
 
-# Or use OpenVINO's install script after cloning:
+This script automatically detects your Linux distribution and installs all required dependencies for:
+- Ubuntu/Debian
+- Fedora/RHEL/CentOS/Rocky/AlmaLinux
+- openSUSE/SLES
+- Arch/Manjaro
+
+**Manual installation (Ubuntu/Debian):**
+```bash
+sudo apt-get update
+sudo apt-get install -y build-essential cmake ninja-build git python3 python3-pip ccache
+
+# After cloning OpenVINO:
 cd openvino
 sudo ./install_build_dependencies.sh
 ```
@@ -138,4 +185,6 @@ ov-build-tools/
 - Uses GCC compiler
 - Packages builds as tar.gz archives
 - Optional: Python virtual environment at `build-env/bin/activate`
-- Make scripts executable: `chmod +x scripts/*.sh`
+- Make scripts executable on first use: `chmod +x scripts/*.sh`
+- Run `setup-linux.sh` first on vanilla installations to install all dependencies
+- Supports Ubuntu, Debian, Fedora, RHEL, CentOS, Rocky, AlmaLinux, openSUSE, SLES, Arch, and Manjaro

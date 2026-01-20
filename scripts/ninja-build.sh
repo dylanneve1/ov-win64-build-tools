@@ -81,12 +81,34 @@ ARTIFACTS_DIR="$ROOT/artifacts"
 # --- Sanity checks ---
 if [ ! -f "$OV_SRC/CMakeLists.txt" ]; then
     echo "ERROR: OpenVINO repo not found at $OV_SRC"
+    echo "Please run: ./scripts/clone-all.sh first"
     exit 1
 fi
 
 if [ ! -f "$GENAI_SRC/CMakeLists.txt" ]; then
     echo "ERROR: openvino.genai repo not found at $GENAI_SRC"
+    echo "Please run: ./scripts/clone-all.sh first"
     exit 1
+fi
+
+# Check if OpenVINO dependencies are installed
+if [ ! -f "$OV_SRC/.deps_installed" ]; then
+    echo ""
+    echo "=========================================="
+    echo "  WARNING: OpenVINO dependencies may not be installed"
+    echo "=========================================="
+    echo ""
+    echo "For first-time setup, run:"
+    echo "  cd $OV_SRC"
+    echo "  sudo ./install_build_dependencies.sh"
+    echo "  touch .deps_installed"
+    echo "  cd -"
+    echo ""
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
 fi
 
 echo ""
