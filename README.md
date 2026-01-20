@@ -88,6 +88,15 @@ Build with specific number of parallel jobs:
 ./linux/ninja-build.sh --jobs 8
 ```
 
+**Cross-compile for Windows on Linux:**
+```bash
+# Install MinGW-w64 first (if not already installed)
+sudo apt-get install mingw-w64
+
+# Cross-compile
+./linux/ninja-build-windows.sh
+```
+
 ### 3. Update
 
 Pull latest changes from both repositories:
@@ -114,7 +123,8 @@ Scripts are organized by platform in separate folders:
 | `clone-all.sh` | Clone both OpenVINO and OpenVINO GenAI repositories |
 | `clone-openvino.sh` | Clone OpenVINO repository only |
 | `clone-openvino-genai.sh` | Clone OpenVINO GenAI repository only |
-| `ninja-build.sh` | Build OpenVINO + GenAI using Ninja and create tar.gz package |
+| `ninja-build.sh` | Build OpenVINO + GenAI for Linux and create tar.gz package |
+| `ninja-build-windows.sh` | **Cross-compile** for Windows on Linux (using MinGW-w64) |
 | `update-all.sh` | Update both repositories (git pull) |
 
 ### Windows Scripts (`windows/`)
@@ -191,6 +201,7 @@ ov-build-tools/
 ### Windows
 - Uses Visual Studio compiler (vcvars64.bat)
 - Supports ccache for faster rebuilds (configure path in ninja-build.bat)
+- **Cross-compilation**: Can build Windows binaries using MinGW-w64 (`ninja-build-windows.sh`)
 - Packages builds as ZIP archives
 - Optional: Python virtual environment at `build-env\Scripts\activate.bat`
 
