@@ -11,9 +11,6 @@ Supports both **Windows** and **Linux**.
 On a vanilla Linux installation, just run:
 
 ```bash
-# Make scripts executable
-chmod +x linux/*.sh
-
 # Run automated setup (does everything!)
 ./linux/setup-linux.sh
 ```

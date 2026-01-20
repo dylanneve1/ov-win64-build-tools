@@ -23,7 +23,7 @@ ninja-build.sh - Build OpenVINO + OpenVINO.GenAI
 ============================================================
 
 Location assumptions:
-  - This script is in scripts/ subfolder with parent containing:
+  - This script is in linux/ subfolder with parent containing:
       ../openvino/
       ../openvino.genai/
 
@@ -81,13 +81,13 @@ ARTIFACTS_DIR="$ROOT/artifacts"
 # --- Sanity checks ---
 if [ ! -f "$OV_SRC/CMakeLists.txt" ]; then
     echo "ERROR: OpenVINO repo not found at $OV_SRC"
-    echo "Please run: ./scripts/clone-all.sh first"
+    echo "Please run: ./linux/clone-all.sh first"
     exit 1
 fi
 
 if [ ! -f "$GENAI_SRC/CMakeLists.txt" ]; then
     echo "ERROR: openvino.genai repo not found at $GENAI_SRC"
-    echo "Please run: ./scripts/clone-all.sh first"
+    echo "Please run: ./linux/clone-all.sh first"
     exit 1
 fi
 
